@@ -1,0 +1,706 @@
+/* Basic Styles */
+body {
+    font-family: sans-serif;
+    background-color: #121212; /* Darker background */
+    color: #eee; /* Light gray text */
+    margin: 0;
+}
+
+.header {
+    background-color: #333; /* Darker header background */
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    align-items: center;
+}
+
+.profil-ikonka {
+    position: absolute;
+    top: 35%;
+    color: #fff; /* Bílá barva ikony profilu */
+}
+#login-btn {
+    right: 20px; /* Přidáme vhodnou vzdálenost od pravého okraje */
+    color: #fff; /* Bílá barva ikony profilu */
+}
+
+#cart-btn {
+    right: 80px; /* Přidáme vhodnou vzdálenost od pravého okraje */
+    color: #fff; /* Bílá barva ikony košíku */
+}
+
+#home-btn {
+    color: #fff;
+    right: 30px;
+}
+
+h1 {
+    color: #fff; /* White header title */
+}
+
+.formular button[name="add_to_cart"] {
+    background-color: #007bff; /* Blue button color */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.formular button[name="add_to_cart"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Product Section */
+.produkty {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.produkt {
+    width: 300px; /* Zvětšení šířky bloku */
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Plynulý přechod barvy a stínu */
+    background-color: #333;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden; /* Skryje část textu, který se případně objeví mimo rámec */
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.produkt:hover {
+    /*transform: translateY(-5px); Hover effect: lift product slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); /* Enhanced shadow on hover */
+    /*padding-bottom: 43px;
+    padding-top: 20px;*/
+}
+
+.produkt img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px; /* Rounded top-left corner */
+    border-top-right-radius: 10px; /* Rounded top-right corner */
+}
+
+.produkt h3 {
+    margin: 10px 0;
+    color: #fff; /* White product title */
+}
+
+.produkt p {
+    margin: 0;
+    color: #ddd; /* Lighter gray price */
+}
+
+.detail {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Roztáhne text na šířku bloku */
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 0; /* Odsazení textu */
+    transform: translateY(100%); /* Počáteční stav: text skrytý */
+    transition: transform 0.3s; /* Plynulý přechod */
+}
+
+/* Footer */
+#footer {
+    background-color: #333; /* Darker footer background */
+    padding: 20px;
+    text-align: center;
+    color: #fff; /* White footer text */
+}
+
+/* Modal */
+/* Modal */
+.modal {
+    display: none; /* Skryj modální okno při načtení stránky */
+    position: fixed; /* Pevné pozicování */
+    z-index: 1; /* Nad všemi ostatními prvky */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Povolí scrollování, pokud je obsah příliš velký */
+    background-color: rgba(0, 0, 0, 0.5); /* Poloprůhledné pozadí */
+}
+
+.modal-content {
+    background-color: #333; /* Tmavě šedá */
+    margin: 10% auto; /* Umístění modálního okna do středu stránky */
+    padding: 20px;
+    border: 1px solid #444;
+    width: 40%; /* Šířka modálního okna */
+}
+
+.modal-content form {
+    border: 1px solid #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    background-color: #444; /* Tmavě šedá barva pro vstupní pole */
+    color: #fff;
+    box-sizing: border-box; /* Zajistí, že okraj bude zahrnut do šířky */
+}
+
+.modal-content button[type="submit"] {
+    background-color: #007bff; /* Modrá barva pro tlačítko */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: #007bff; /* Tmavší modrá při najetí */
+}
+
+
+.modal-content h2 {
+    color: #fff; /* Bílá barva pro nadpis */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    color: #aaa; /* Šedá barva pro štítky */
+    display: block;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+    }
+}
+
+.modal-content p {
+    text-align: center;
+    margin-top: 20px;
+    color: #aaa;
+}
+
+.modal-content a {
+    color: #007bff; /* Modrá barva pro odkaz */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.modal-content a:hover {
+    color: #0056b3; /* Tmavší modrá při najetí */
+}
+
+.close {
+    color: #aaa; /* Šedá barva pro zavírací křížek */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff; /* Bílá barva při najetí na zavírací křížek */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal pro zobrazení obsahu košíku */
+#cart-modal {
+    display: none; /* Skryj modální okno při načtení stránky */
+    position: fixed; /* Pevné pozicování */
+    z-index: 1; /* Nad všemi ostatními prvky */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Povolí scrollování, pokud je obsah příliš velký */
+    background-color: rgba(0, 0, 0, 0.5); /* Poloprůhledné pozadí */
+}
+
+#cart-modal .modal-content {
+    background-color: #333; /* Tmavě šedá */
+    margin: 10% auto; /* Umístění modálního okna do středu stránky */
+    padding: 20px;
+    border: 1px solid #444;
+    width: 40%; /* Šířka modálního okna */
+}
+
+#cart-modal .modal-content form {
+    border: 1px solid #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.product_number {
+    width: 60px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    background-color: #444;
+    color: #fff;
+    box-sizing: border-box;
+}
+button.product_number {
+    width: 100%;
+    color: #fff;
+    background-color: #444;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Plynulý přechod barvy a stínu */
+}
+button.product_number:hover {
+    background-color: rgba(0,255,0,0.5);
+    cursor: pointer;
+}
+
+#cart-modal .modal-content input[type="number"] {
+    width: 60px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    background-color: #444; /* Tmavě šedá barva pro vstupní pole */
+    color: #fff;
+    box-sizing: border-box; /* Zajistí, že okraj bude zahrnut do šířky */
+}
+
+#cart-modal .modal-content button {
+    background-color: #007bff; /* Modrá barva pro tlačítko */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#cart-modal .modal-content button:hover {
+    background-color: #0056b3; /* Tmavší modrá při najetí */
+}
+
+#cart-modal .close {
+    color: #aaa; /* Šedá barva pro zavírací křížek */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#cart-modal .close:hover,
+#cart-modal .close:focus {
+    color: #fff; /* Bílá barva při najetí na zavírací křížek */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* createNewPaymentMethod.. */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.column {
+    flex: 0 1 48%; /* Zajistí, aby sloupce měly pevnou šířku */
+    padding: 10px;
+    border: 1px solid #333; /* Přidá ohraničení kolem sloupce v tmavém režimu */
+    border-radius: 5px; /* Zaoblené hrany */
+    background-color: #444; /* Barva pozadí sloupce v tmavém režimu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Stín */
+}
+
+.column h2 {
+    margin-bottom: 10px;
+    color: #ddd; /* Barva nadpisu v tmavém režimu */
+}
+
+.column table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.column table th, .column table td {
+    padding: 8px;
+    border: 1px solid #555; /* Barva rámečků buněk tabulky v tmavém režimu */
+    text-align: left;
+}
+
+.column table th {
+    background-color: #666; /* Barva pozadí hlavičky tabulky v tmavém režimu */
+}
+
+form input[type="radio"] {
+    display: none;
+}
+
+form input[type="radio"] + label {
+    display: inline-block;
+    cursor: pointer;
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+form input[type="radio"] + label:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+form input[type="radio"]:checked + label:before {
+    background-color: #fff;
+}
+
+/* Ikony */
+form input[type="radio"]#doprava_domu:checked + label:before {
+    content: "\f015"; /* Icon ID pro dopravu domů - Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+form input[type="radio"]#ulozeni_na_sklade:checked + label:before {
+    content: "\f472"; /* Icon ID pro uložení na skladě - Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.platebni-metoda {
+    background-color: #444;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.platebni-metoda h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.platebni-metoda label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.platebni-metoda input[type="number"],
+.platebni-metoda input[type="text"],
+.platebni-metoda input[type="date"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.platebni-metoda input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.platebni-metoda input[type="submit"]:hover {
+    background-color: #444;
+}
+
+.platebni-metoda select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.platebni-metoda select option {
+    background-color: #444;
+    color: #fff;
+}
+
+.platebni-metoda input[type="submit"],
+.platebni-metoda button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.platebni-metoda input[type="submit"]:hover,
+.platebni-metoda button:hover {
+    background-color: #555;
+}
+
+/* orderCompleted */
+.container_completed {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1.container_completed {
+    font-size: 32px;
+    text-align: center;
+}
+
+p.container_completed {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+/* Nové možnosti v modálním okně */
+
+/* Obecný styl pro modal */
+.modal-login {
+    display: none; /* Skrýt modal */
+    position: fixed; /* Upevnit modal na pozici */
+    z-index: 1; /* Nastavit index vrstvy */
+    left: 0;
+    top: 0;
+    width: 100%; /* Šířka 100% */
+    height: 100%; /* Výška 100% */
+    overflow: auto; /* Povolit posouvání obsahu */
+    background-color: rgba(0, 0, 0, 0.4); /* Tmavé pozadí s průhledností */
+}
+
+/* Obsah modalu */
+.modal-content-login {
+    background-color: #333; /* Tmavě šedé pozadí */
+    margin: 15% auto; /* Vycentrovat obsah */
+    padding: 20px;
+    border: 1px solid #888; /* Tenká šedá ohraničení */
+    width: 80%; /* Šířka 80% */
+    max-width: 600px; /* Maximální šířka */
+    border-radius: 5px; /* Zakřivení rohů */
+}
+
+/* Zavírací tlačítko */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Tlačítka pro navigaci */
+    /* Tlačítka pro navigaci */
+.modal-content-login a {
+    display: block;
+    color: #fff;
+    padding: 10px 15px; /* Zmenšit výšku a šířku */
+    text-decoration: none;
+    font-size: 16px; /* Zmenšit velikost písma */
+    border: none;
+    background-color: #555;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content-login a:hover {
+    background-color: #444;
+}
+
+/* Styl pro aktivní tlačítko */
+.modal-content-login a.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Responzivní design pro menší obrazovky */
+@media screen and (max-width: 600px) {
+    .modal-content-login {
+        width: 95%;
+    }
+}
+
+/* Styly pro jednotlivé objednávky */
+.objednavky {
+    min-height: 60vh;
+}
+.objednavka {
+    max-width: 600px; /* Maximální šířka objednávky */
+    margin: 15px auto; /* Zarovnání objednávky na střed */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Stín pro efekt hloubky */
+    transition: transform 0.3s ease; /* Plynulý přechod pro efekt změny velikosti */
+}
+
+.objednavka:hover {
+    transform: scale(1.05); /* Zvětšení objednávky při najetí myší */
+}
+
+.objednavka p {
+    margin: 5px 0;
+}
+
+/* Styly pro tlačítko "Recenze" */
+.recenze-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Plynulý přechod pro změnu barvy pozadí */
+}
+
+.recenze-btn:hover {
+    background-color: #0056b3; /* Změna barvy pozadí při najetí myší */
+}
+
+h4 {
+    text-align: center;
+}
+
+/* Module.. */
+.module {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #333; /* Barva modulu */
+    color: #fff; /* Barva textu v modulu */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styl pro formulář v modulu */
+.module form {
+    margin-top: 20px;
+}
+
+.module label {
+    display: block;
+    margin-bottom: 5px;
+    color: #aaa; /* Barva štítků formuláře */
+}
+
+.module input[type="number"],
+.module textarea {
+    width: calc(100% - 22px); /* Šířka formulářových polí */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444; /* Barva pozadí formulářových polí */
+    color: #fff; /* Barva textu v formulářových polích */
+}
+
+.module button[type="submit"] {
+    width: 100%; /* Šířka tlačítka */
+    padding: 12px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Modrá barva tlačítka */
+    color: #fff; /* Barva textu na tlačítku */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Plynulý přechod barvy pozadí */
+}
+
+.module button[type="submit"]:hover {
+    background-color: #0056b3; /* Tmavší modrá při najetí */
+}
+.center {
+    text-align: center;
+    margin: 0;
+    background-color: #333333;
+}
+
+/* Styly pro formulář */
+.form {
+    max-width: 600px; /* Limit form width */
+    margin: 0 auto; /* Center form horizontally */
+    padding-top: 30px;
+    padding-bottom: 30px;
+    min-height: 60vh;
+}
+
+.form label {
+    color: #aaa; /* Light gray label color */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form input[type="text"],
+.form input[type="number"],
+.form textarea,
+.form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    background-color: #444; /* Dark gray input field background */
+    color: #eee; /* Light gray text color */
+    box-sizing: border-box; /* Include border in width */
+    border-radius: 5px;
+}
+
+.form input[type="text"]:focus,
+.form input[type="number"]:focus,
+.form textarea:focus,
+.form select:focus {
+    border-color: #007bff; /* Blue border color on focus */
+}
+
+.form button[type="submit"] {
+    background-color: #007bff; /* Blue button color */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
