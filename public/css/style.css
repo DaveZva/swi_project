@@ -24,6 +24,11 @@ body {
     color: #fff; /* Bílá barva ikony profilu */
 }
 
+#login-btn2 {
+    right: 20px; /* Přidáme vhodnou vzdálenost od pravého okraje */
+    color: #fff; /* Bílá barva ikony profilu */
+}
+
 #cart-btn {
     right: 80px; /* Přidáme vhodnou vzdálenost od pravého okraje */
     color: #fff; /* Bílá barva ikony košíku */

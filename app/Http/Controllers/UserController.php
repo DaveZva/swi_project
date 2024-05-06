@@ -11,16 +11,25 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function login(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+    $email = $request->input('email');
+    $password = $request->input('password');
+    //dd($request->all());
+    $credentials = ['email' => $email, 'password' => $password];
+    if ($this->attempt($credentials)) {
+        return redirect()->back()->withSuccess('Login successful');
+    } else {
+        return redirect()->back()->withErrors(['message' => 'Login failed']);
+    }
+}
+    public function logout()
     {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            // Přihlášení úspěšné
-            return redirect()->intended('/dashboard');
-        } else {
-            // Přihlášení neúspěšné
-            return redirect()->back()->withErrors(['message' => 'Neplatné přihlašovací údaje']);
-        }
+        Auth::logout();
+        return redirect()->back()->withSuccess('Logout successful');
     }
 
     public function registration(Request $request)

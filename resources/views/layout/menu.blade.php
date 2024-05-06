@@ -8,7 +8,11 @@
 
     <h1>E-shop</h1>
     <!-- Symbol profilu -->
+    @if ($loggedInUser)
+        <a href="{{ route('logout') }}" id="login-btn2" class="profil-ikonka"><i class="fas fa-sign-out-alt"></i></a>
+    @else
     <a href="#" id="login-btn" class="profil-ikonka"><i class="{{ $loggedInUser ? 'fa fa-check' : 'fas fa-user' }}"></i></a>
+    @endif
     @if (!empty(session('cart')))
         <a href="#" id="cart-btn" class="profil-ikonka"><i class="fa-solid fa-cart-plus"></i></a>
     @else
@@ -50,17 +54,17 @@
 
     <!-- Modal pro přihlášení -->
     <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="close-login">&times;</span>
-            <form action="{{ url('/login') }}" method="post">
-                @csrf <!-- Přidání CSRF token pro ochranu formuláře -->
-                <input type="text" placeholder="Uživatelské jméno" name="username">
-                <input type="password" placeholder="Heslo" name="password">
-                <button type="submit">Přihlásit se</button>
-            </form>
-            <p>Nemáte účet? <a href="{{ route('registration') }}">Zaregistrujte se</a></p>
-        </div>
-    </div>
+  <div class="modal-content">
+    <span class="close" id="close-login">&times;</span>
+    <form action="{{ route('login') }}" method="post">
+      @csrf
+      <input type="text" placeholder="E-mail" name="email">
+      <input type="password" placeholder="Heslo" name="password">
+      <button type="submit">Přihlásit se</button>
+    </form>
+    <p>Nemáte účet? <a href="{{ route('registration') }}">Zaregistrujte se</a></p>
+  </div>
+</div>
 @endsection
 
 

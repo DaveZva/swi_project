@@ -2,20 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 
     //Route::get('/', function (){return view('baseWeb.home');})->name('home');
 
-    Route::get('/', [ProductController::class, 'allProducts'])->name('product.all');
-
-
-Route::get('/login', function () {
-    return view('baseWeb.login');
-})->name('login');
-
-Route::post('/login', [UserController::class, 'login']);
+Route::get('/', [ProductController::class, 'allProducts'])->name('product.all');
 
 Route::get('/registration', function () {
     return view('baseWeb.registration');
@@ -23,6 +17,9 @@ Route::get('/registration', function () {
 
 Route::post('/registration', [UserController::class, 'registration']);
 
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
 // Products
 // Route pro získání detailu produktu
