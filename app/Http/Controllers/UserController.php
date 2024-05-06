@@ -14,9 +14,7 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        //dd($credentials);     TEST - vypíše pole s email a heslem
-
-        if ($this->attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             // Přihlášení úspěšné
             return redirect()->intended('/dashboard');
         } else {

@@ -45,9 +45,8 @@ class ProductController extends Controller
 public function allProducts()
 {
     $products = Product::all();
-    $cart = session('cart', []);
 
-    return view('product/products', compact('products', 'cart'));
+    return view('product/products', ['products' => $products]);
 }
 
 
