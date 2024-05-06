@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('cart-content')
 <div id="cart-modal" class="modal">
     <div class="modal-content">
         <span class="close" id="close-cart">&times;</span>
@@ -23,3 +26,4 @@
         </form>
     </div>
 </div>
+@endsection

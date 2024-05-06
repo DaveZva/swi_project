@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('main-content')
+@section('home-content')
     <form action="{{ route('login') }}" method="POST">
         @csrf
         <div>

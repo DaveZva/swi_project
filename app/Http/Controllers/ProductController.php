@@ -14,7 +14,6 @@ class ProductController extends Controller
         return view('product/addProduct', ['kategorie' => $kategorie]); // Předání kategorií do šablony
     }
 
-
     public function store(Request $request)
 {
     $request->validate([
@@ -46,7 +45,10 @@ class ProductController extends Controller
 public function allProducts()
 {
     $products = Product::all();
-    return view('product.products', ['products' => $products]);
+    $cart = session('cart', []);
+
+    return view('product/products', compact('products', 'cart'));
 }
+
 
 }

@@ -17,7 +17,7 @@
 
 @yield('home-content')
 @yield('createProduct')
-@yield('product-list')
+@yield('modal-content')
 @include('layout.footer')
 
 <!-- Optional JavaScript -->

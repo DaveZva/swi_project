@@ -10,11 +10,30 @@ class CartController extends Controller
 {
     public function showCart()
     {
-        $cartContent = session('cart', []);
+        // Získání obsahu košíku z Session
+        $cart = Session::get('cart', []);
 
-        $products = Product::whereIn('id', array_keys($cartContent))->get();
+        // Předání obsahu košíku do pohledu
+        return view('cart', ['cart' => $cart]);
+    }
 
-        return view('cart', compact('products', 'cartContent'));
+    public function addToCart(Request $request, $productId)
+    {
+        $quantity = $request->input('quantity');
+
+        // Zkontroluj, zda v Session již existuje košík
+        if (!Session::has('cart')) {
+            // Pokud neexistuje, vytvoř nový prázdný košík
+            Session::put('cart', []);
+        }
+
+        // Přidání nové položky do košíku
+        $cart = Session::get('cart');
+        $cart[$productId] = $quantity;
+        Session::put('cart', $cart);
+
+        // Přesměrování zpět na stránku, kde bylo tlačítko "Přidat do košíku" stisknuto
+        return redirect()->back()->with('success', 'Položka byla úspěšně přidána do košíku.');
     }
 
 

@@ -7,5 +7,6 @@
 
     @include('product.products')
 
+    <h3>Přihlášení</h3>
 
 @endsection
