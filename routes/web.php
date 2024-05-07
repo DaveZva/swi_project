@@ -21,6 +21,8 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
+Route::post('/add-to-cart', 'CartController@addToCart');
+
 // Products
 // Route pro získání detailu produktu
 //Route::get('/product/{id}', [EshopController::class, 'getProduct'])->name('product.detail');

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
 
-    <title>Hello, world!</title>
+    <title>SWI_PROJECT</title>
 </head>
 <body>
 @include('layout.menu')

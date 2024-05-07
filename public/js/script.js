@@ -66,4 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+function addToCart(productId) {
+    // AJAX požadavek
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/add-to-cart", true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Zde můžete provést další akce po úspěšném přidání do košíku
+            alert("Produkt byl úspěšně přidán do košíku!");
+        }
+    };
+    // Data pro odeslání
+    var data = JSON.stringify({ productId: productId });
+    // Odešli AJAX požadavek
+    xhr.send(data);
+}
 
