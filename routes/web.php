@@ -42,6 +42,15 @@ Route::post('order.deleteCart', [CartController::class, 'deleteCart'])->name('ca
 
 Route::get('order.myOrders', [OrderController::class, 'showMyOrders'])->name('order.myOrders');
 
+Route::get('admin', [UserController::class, 'getAdminPage'])->name('admin');
+
+Route::post('admin.add', [UserController::class, 'setAdmin'])->name('admin.add');
+
+Route::get('admin.allOrders', [OrderController::class, 'showAllOrders'])->name('admin.allOrders');
+
+Route::get('user.edit', [UserController::class, 'editUser'])->name('user.edit');
+
+Route::post('user.update', [UserController::class, 'update'])->name('user.update');
 
 
 // Products

@@ -65,7 +65,6 @@ public function showWithId($id)
 {
     $order = Order::find($id); // Získání objednávky podle ID
     $orderTime = $order->products_create; // Čas vytvoření objednávky
-    //dd($orderTime, $order->products_create);
     $orderItems = OrderItem::where('user_id', $order->user_id)
                             ->where('created_at', $orderTime)
                             ->get(); // Získání položek objednávky
@@ -75,9 +74,9 @@ public function showWithId($id)
 
 public function showAllOrders()
 {
-    $order = Order::latest()->first(); // Získání poslední objednávky
-    $orderItem = OrderItem::where('user_id', $order->user_id)->get(); // Získání položek objednávky
-    //Doplnit return..
+    $orders = Order::all(); // Získání všech objednávek
+    $user = auth()->user();
+    return view('order.allOrders', ['orders' => $orders, 'user' => $user]);
 }
 
 public function orderItems()
@@ -91,4 +90,5 @@ public function showMyOrders()
     $orders = Order::where('user_id', auth()->id())->get();
     return view('order.myOrders', ['orders' => $orders]);
 }
+
 }

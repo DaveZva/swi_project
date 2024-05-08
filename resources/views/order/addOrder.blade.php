@@ -15,7 +15,7 @@
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" value="{{ Auth::user()->email }}">
         </div>
         <div>
             <label for="phone">Phone:</label>
@@ -38,7 +38,7 @@
             <input type="text" name="country" id="country">
         </div>
         <div>
-            <label for="payment_method">Zip:</label>
+            <label for="payment_method">Platební metoda:</label>
             <input type="text" name="payment_method" id="payment_method">
         </div>
         <input type="submit">
