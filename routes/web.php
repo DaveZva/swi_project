@@ -8,7 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 
 
-    //Route::get('/', function (){return view('baseWeb.home');})->name('home');
+//Route::get('/', function (){return view('baseWeb.home');})->name('home');
 
 Route::get('/', [ProductController::class, 'allProducts'])->name('product.all');
 
@@ -33,6 +33,11 @@ Route::post('/order/submit', [OrderController::class, 'submit'])->name('order.su
 Route::get('/order/create', function () {
     return view('order/addOrder');
 })->name('order.create');
+
+Route::get('/order/statement', [OrderController::class, 'show'])->name('order.statement');
+
+Route::post('order.deleteCart', [CartController::class, 'deleteCart'])->name('cart.deleteCart');
+
 
 
 // Products

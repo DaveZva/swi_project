@@ -54,4 +54,13 @@ class CartController extends Controller
         // Odpověď AJAX požadavku - můžete poslat zpět libovolná data, která chcete zpracovat ve vašem JavaScriptu
         return redirect()->back()->withSuccess('All products removed');
     }
+
+    public function deleteCart(Request $request)
+    {
+        // Odstranění všech produktů z košíku
+        session()->forget('cart');
+        // Odpověď AJAX požadavku - můžete poslat zpět libovolná data, která chcete zpracovat ve vašem JavaScriptu
+        return redirect()->route('product.all')->with('success_message', 'Produkt byl úspěšně přidán.');
+
+    }
 }

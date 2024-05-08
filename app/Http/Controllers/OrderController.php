@@ -33,7 +33,7 @@ class OrderController extends Controller
         // Můžeme provést další akce, např. přidání produktů z košíku do tabulky order_items
 
         // Přesměrování na jinou stránku nebo zobrazení potvrzovací zprávy
-        return redirect()->route('order.create')->with('success_message', 'Produkt byl úspěšně přidán.');
+        return redirect()->route('order.statement')->with('success_message', 'Produkt byl úspěšně přidán.');
     }
 
     public function submitProducts(Request $request) {
@@ -50,8 +50,27 @@ class OrderController extends Controller
             $orderItem->product_id = $productId;
             $orderItem->quantity = $quantity;
             $orderItem->save();
-
-            return redirect()->route('order.create');
         }
+        return redirect()->route('order.create');
     }
+    public function show()
+{
+    $order = Order::latest()->first(); // Získání poslední objednávky
+    $lastOrderItemTimestamp = OrderItem::orderBy('created_at', 'desc')->first()->created_at;
+    $orderItem = OrderItem::where('user_id', $order->user_id)->where('created_at', $lastOrderItemTimestamp)->get(); // Získání položek objednávky
+    return view('order.statement', ['order' => $order], ['orderItems' => $orderItem]);
+}
+
+public function showAllOrders()
+{
+    $order = Order::latest()->first(); // Získání poslední objednávky
+    $orderItem = OrderItem::where('user_id', $order->user_id)->get(); // Získání položek objednávky
+    //Doplnit return..
+}
+
+public function orderItems()
+{
+    // Vrátí všechny položky objednávky spojené s touto objednávkou
+    return $this->hasMany(OrderItem::class);
+}
 }
