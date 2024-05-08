@@ -1,6 +1,7 @@
 @extends('layout.master')
 
 @section('home-content')
+    <div class="produkty">
     <div class=row>
         @foreach($products as $product)                
             <div class="produkt">
@@ -10,12 +11,17 @@
                     <p class="card-text">{{ $product->description }}</p>
                     <p class="card-text">Price: ${{ $product->price }}</p>
                     @auth
-                        <!-- Toto tlačítko se zobrazí pouze pro přihlášeného uživatele -->
-                        <button type="button" class="btn btn-primary" onclick="addToCart({{ $product->id }})">Přidat do košíku</button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="number" name="quantity" value="1" min="1">
+                        <button type="submit" class="btn btn-primary">Save to Cart</button>
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    </form>
                     @endauth
                 </div>
             </div>
         @endforeach
+    </div>
     </div>
 @endsection
 

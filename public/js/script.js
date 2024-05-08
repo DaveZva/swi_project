@@ -25,16 +25,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Funkce pro aktualizaci celkové ceny
     function updateTotalPrice() {
         var totalPrice = 0;
-        // Najdi všechna políčka s množstvím
         var quantityInputs = document.querySelectorAll('input[name="quantity[]"]');
-        // Projdi všechna políčka a přidej k celkové ceně součin ceny produktu a množství
         quantityInputs.forEach(function(input) {
-            var price = parseFloat(input.getAttribute('data-price')); // Získání ceny produktu
-            var quantity = parseInt(input.value); // Získání množství
-            totalPrice += price * quantity; // Aktualizace celkové ceny
+            var price = parseFloat(input.getAttribute('data-price'));
+            var quantity = parseInt(input.value);
+            totalPrice += price * quantity;
         });
-        // Zobraz novou celkovou cenu
-        document.getElementById('total-price-value').innerText = totalPrice.toFixed(2) + " Kč";
+        document.getElementById('total-price-value').innerText = totalPrice.toFixed(2);
     }
 
     // Přidání posluchačů událostí pro změnu množství produktu
@@ -65,21 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
             closeLoginModal();
         }
     });
+    
 });
-function addToCart(productId) {
-    // AJAX požadavek
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/add-to-cart", true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Zde můžete provést další akce po úspěšném přidání do košíku
-            alert("Produkt byl úspěšně přidán do košíku!");
-        }
-    };
-    // Data pro odeslání
-    var data = JSON.stringify({ productId: productId });
-    // Odešli AJAX požadavek
-    xhr.send(data);
-}
 

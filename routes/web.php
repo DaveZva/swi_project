@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 
 
     //Route::get('/', function (){return view('baseWeb.home');})->name('home');
@@ -21,7 +22,18 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
-Route::post('/add-to-cart', 'CartController@addToCart');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+
+Route::post('/remove-from-cart', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+Route::post('/order/order', [OrderController::class, 'submitProducts'])->name('order.order');
+
+Route::post('/order/submit', [OrderController::class, 'submit'])->name('order.submit');
+
+Route::get('/order/create', function () {
+    return view('order/addOrder');
+})->name('order.create');
+
 
 // Products
 // Route pro získání detailu produktu
@@ -51,11 +63,6 @@ Route::post('/category', [CategoryController::class, 'store'])->name('category.s
 
 
 //Cart
-// Route pro přidání produktu do košíku
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-
-// Route pro odebrání produktu z košíku
-Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 // Route pro zobrazení obsahu košíku
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
