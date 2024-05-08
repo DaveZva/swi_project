@@ -36,7 +36,11 @@ Route::get('/order/create', function () {
 
 Route::get('/order/statement', [OrderController::class, 'show'])->name('order.statement');
 
+Route::get('/order/statement/{id}', [OrderController::class, 'showWithId'])->name('order.statement.view');
+
 Route::post('order.deleteCart', [CartController::class, 'deleteCart'])->name('cart.deleteCart');
+
+Route::get('order.myOrders', [OrderController::class, 'showMyOrders'])->name('order.myOrders');
 
 
 

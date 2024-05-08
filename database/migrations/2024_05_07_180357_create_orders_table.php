@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('payment_method');
             $table->string('status');
-            $table->time('products_create');
+            $table->dateTime('products_create');
             $table->decimal('total_price', 10, 2);
             $table->timestamps();
         });
