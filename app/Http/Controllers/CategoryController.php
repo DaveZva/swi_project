@@ -29,6 +29,7 @@ class CategoryController extends Controller
         $category->parent_id = $request->parent_id;
         $category->is_active = 1;
         $category->save();
+        return redirect()->route('category.create')->with('success', 'Category created successfully');
     }
 
     public function allCategories()
