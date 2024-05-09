@@ -24,9 +24,7 @@ class CartController extends Controller
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity');
 
-        // Zde můžete provést ověření a validaci dat, například zda existuje produkt s daným ID
         // Přidání produktu do košíku (uložení do session, databáze atd.)
-        // V tomto příkladu předpokládáme, že používáte session pro uchování košíku
         $cart = session()->get('cart', []);
         for($i = 0; $i < $quantity; $i++)
         {
@@ -38,21 +36,15 @@ class CartController extends Controller
         }
         session()->put('cart', $cart);
 
-        // Odpověď AJAX požadavku - můžete poslat zpět libovolná data, která chcete zpracovat ve vašem JavaScriptu
+        // Odpověď AJAX požadavku 
         return redirect()->back()->withSuccess('Product added');
-    }
-
-
-    public function checkout(Request $request)
-    {
-        // Zde provedete logiku pro pokračování k objednávce
     }
     
     public function removeFromCart(Request $request)
     {
         // Odstranění všech produktů z košíku
         session()->forget('cart');
-        // Odpověď AJAX požadavku - můžete poslat zpět libovolná data, která chcete zpracovat ve vašem JavaScriptu
+        // Odpověď AJAX požadavku
         return redirect()->back()->withSuccess('All products removed');
     }
 
@@ -60,7 +52,7 @@ class CartController extends Controller
     {
         // Odstranění všech produktů z košíku
         session()->forget('cart');
-        // Odpověď AJAX požadavku - můžete poslat zpět libovolná data, která chcete zpracovat ve vašem JavaScriptu
+        // Odpověď AJAX požadavku
         return redirect()->route('product.all')->with('success_message', 'Produkt byl úspěšně přidán.');
 
     }

@@ -10,4 +10,6 @@ use App\Models\Post;
 class Category extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name'];
 }

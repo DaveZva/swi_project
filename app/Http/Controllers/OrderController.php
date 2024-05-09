@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function submit(Request $request)
     {
         $lastOrderItemTimestamp = OrderItem::orderBy('created_at', 'desc')->first()->created_at;
-        // Validace dat z formuláře (je vhodné provést validaci)
+        // Validace dat z formuláře
         //dd($lastOrderItemTimestamp);
         // Vytvoření nového záznamu v tabulce orders
         $order = new Order();
@@ -31,8 +31,6 @@ class OrderController extends Controller
         $order->products_create = $lastOrderItemTimestamp;
         $order->total_price = 0; 
         $order->save();
-
-        // Můžeme provést další akce, např. přidání produktů z košíku do tabulky order_items
 
         // Přesměrování na jinou stránku nebo zobrazení potvrzovací zprávy
         return redirect()->route('order.statement.view', ['id' => $order->id])->with('success_message', 'Produkt byl úspěšně přidán.');

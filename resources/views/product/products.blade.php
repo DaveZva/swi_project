@@ -2,6 +2,7 @@
 
 @section('home-content')
     <div class="produkty">
+        <h1>Produkty</h1>
     <div class=row>
         @foreach($products as $product)                
             <div class="produkt">
