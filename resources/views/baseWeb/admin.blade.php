@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('home-content')
+@section('home-content')                                {{-- dodělat omezení --}}
     <div class="produkty">
         @if($user->role == 'admin') 
             {{-- Obsah pro admina --}}
